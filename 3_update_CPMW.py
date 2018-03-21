@@ -130,6 +130,32 @@ def format_page(cat, x_id, count):
     o = '|Photo=' + x_id['bio_data']['bio_image'] +'\n'
     p = '|id_everypolitician=' + x_id['id_data']['id_everypolitician'] +'\n'
     q = '|id_CP_MW=' +  x_id['id_CP_MW'] +'\n'
+    q1 = '|Q1=' +  x_id['crowdsourced']['Q1'] +'\n'
+    q2 = '|Q2=' +  x_id['crowdsourced']['Q2'] +'\n'
+    q3 = '|Q3=' +  x_id['crowdsourced']['Q3'] +'\n'
+
+    #print(x_id['career_data']['climate_caucus_member'].get(keys,""))
+
+
+    try:
+        if '2015' in x_id['career_data']['climate_caucus_member']:
+            print("Q2 in caucus")
+            q2preface = str("|Q2=" + x_id['bio_data']['bio_given_name'] + " is a member of the House Climate Solutions Caucus, a bipartisan group of Representatives with a stated goal of working together to achieve action addressing the risks from climate change."+'\n')
+            q2 = q2.replace("|Q2=", q2preface)
+            print("Q2 in caucus")
+            print(q2)
+
+            import sys
+            sys.exit()
+        else:
+            pass
+    #except:
+     #   print("error")
+
+    print(q2)
+
+
+
     tweeturls = ""
     loop = 0
     for one in (x_id['urls']['urls_twitter']):
@@ -145,10 +171,11 @@ def format_page(cat, x_id, count):
     #qw = '|TW2=' + str(x_id['urls']['urls_twitter'][1]).replace("['","").replace("']","").replace("[]","") +'\n'
     #qe = '|TW3=' + str(x_id['urls']['urls_twitter'][2]).replace("['","").replace("']","").replace("[]","") +'\n'
     r = '}}'
-    insert = (a + b + c + d + f + g + h + i + j + k + l + ll + m + n + o + q + qq + r)
+    insert = (a + b + c + d + f + g + h + i + j + k + l + ll + m + n + o + q + q1 + q2 + q3 + qq + r)
 
     new_page = x_id['id_CP_MW']
     print(new_page)
+
     a_page = site.Pages[new_page]
     if a_page.exists == False:
         a_page.save(insert, save_note)
@@ -159,7 +186,6 @@ def format_page(cat, x_id, count):
         #print("Page already exists, will overwrite")
     print(k)
     time.sleep(5)
-
 
 for cat in cats:
     id_list = []

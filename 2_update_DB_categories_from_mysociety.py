@@ -158,7 +158,7 @@ def get_person_data(person_in_term, persons_index, jsonobject):
             return result
     #contact_data
     contact_fax_gov = contacts_array_query("fax")
-    contact_fax_campagin = []
+    contact_fax_campaign = []
     contact_email_gov = contacts_array_query("email")
     contact_email_campaign = []
     contact_phone_gov = contacts_array_query("phone")
@@ -242,7 +242,7 @@ def get_person_data(person_in_term, persons_index, jsonobject):
              #"bio_sort_names" :  bio_sort_names},
         "contact_data":
             {"contact_fax_gov": contact_fax_gov,
-             "contact_fax_campagin": contact_fax_campagin,
+             "contact_fax_campaign": contact_fax_campaign,
              "contact_email_gov": contact_email_gov,
              "contact_email_campaign": contact_email_campaign,
              "contact_phone_gov ": contact_phone_gov,
